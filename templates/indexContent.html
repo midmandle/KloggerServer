@@ -1,0 +1,145 @@
+{% extends "index.html" %}
+{% block head %}
+  {{super()}}
+  <link href="{{ url_for('static', filename="baseCSS.css")}}" rel="stylesheet">
+{% endblock %}
+
+{% block homeContent %}
+  <h1> Welcome to Klogger v1.0</h1>
+
+  <p>
+    The tabs at the top of the page present multiple different perspectives of the data
+    collected by the client.
+  </p>
+
+  <p>
+    <h2>Sessions</h2>
+
+    Shows all existing sessions with associated ID, start time and end time.
+    <br/>
+    <br/>
+    Each Session can be viewed independantly by clicking "View Session" for any row.
+    <br/>
+    <br/>
+    After clicking "View Session" the "Per Session Analysis" tab will become active.
+    Selecting this tab will show the analysis for the Session selected.
+    <br/>
+    <br/>
+  </p>
+
+  <p>
+    <h2>Per Session Analysis</h2>
+
+    Shows the independant analysis for a selected session on the "Students" tab.
+    <br/>
+    <br/>
+  </p>
+
+  <p>
+    <h2>Per User Analysis</h2>
+
+    Shows the analysis for all sessions for a selected student ID.
+    <br/>
+    <br/>
+  </p>
+
+  <p>
+    <h2>Population Analysis</h2>
+
+    Shows analysis for the entire population of sessions recorded by the client.
+    <br/>
+    <br/>
+  </p>
+
+{% endblock %}
+
+{% block studentContent %}
+  <p id="contentLog">Content:</p>
+  <div>
+    <table id="tableOutput">
+      <tr>
+        <th class="table-header"><h1>ID</h1></th>
+        <th class="table-header"><h1>Session Start Date/Time</h1></th>
+        <th class="table-header"><h1>Session End Date/Time</h1></th>
+      </tr>
+
+      {% for i in log_content %}
+
+      {% endfor %}
+
+    </table>
+  </div>
+  <div id="studentButtons" class="buttonPanel">
+    <button id="refreshButton">Refresh</button>
+    <button id="clearContentLogButton">Clear Content</button>
+    <button id="deleteAllButton">Delete All</button>
+  </div>
+{% endblock %}
+
+{% block sessionAnalysisContent %}
+  <div id="statsOutDiv" class="statistics">
+    <div id="overviewStats">
+      <h2>Overview Stats</h2>
+      <div id="overviewStatsOut">
+        Empty but should contain list of stats
+      </div>
+      <div id="chartPanel">
+        <label for="chartType"> Select a chart type: </label>
+        <select id="chartType">
+          <option> Time Spent Per Program </option>
+          <option> Actions Per Program </option>
+          <option> Keypresses Per Program </option>
+          <option> Mouse-clicks Per Program </option>
+        </select>
+        <button id="makeSessionChart">Generate Graph</button>
+      </div>
+      <div id="sessionChart" class="chart"></div>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block perUserAnalysis %}
+  <div>
+    <h2> Per User Analysis </h2>
+    <label for="users"> Select a User ID </label>
+    <select id="users">
+    </select>
+
+    <label for="userChartType"> Select a graph </label>
+    <select id="userChartType">
+      <option>Time Spent Per Session</option>
+      <option>Time Spent Per Day</option>
+      <option>Time Spent Per Program</option>
+      <option>Number Of Keystrokes Per Session</option>
+      <option>Number Of Actions Per Session</option>
+      <option>Number Of Clicks Per Session</option>
+      <option>Number Of Programs Used Per Session</option>
+    </select>
+
+    <button id="getUserData"> Generate Graph </button>
+
+    <div id="userChart" class="chart">
+    </div>
+  </div>
+{% endblock %}
+
+{% block populationAnalysis %}
+  <div>
+    <h2> Population Analysis </h2>
+
+    <label for="populationChartType"> Select a graph </label>
+    <select id="populationChartType">
+      <option>Average Time Per Session</option>
+      <option>Average Time Per Day</option>
+      <option>Average Actions Per Session</option>
+      <option>Average Keystrokes Per Session</option>
+      <option>Average Clicks Per Session</option>
+      <option>Average Number Of Programs Used Per Session</option>
+    </select>
+
+    <button id="getPopulationData"> Generate Graph </button>
+    <div id="populationChart" class="chart">
+    </div>
+  </div>
+{% endblock %}

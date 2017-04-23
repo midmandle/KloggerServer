@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Klogger</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="{{ url_for('static', filename="jquery-ui-1.12.1.custom/external/jquery/jquery.js")}}"></script>
+    <link href="{{ url_for('static', filename="jquery-ui-1.12.1.custom/jquery-ui.min.css")}}" rel="stylesheet">
+    <script src="{{ url_for('static', filename="jquery-ui-1.12.1.custom/jquery-ui.min.js")}}"></script>
+    <script src="{{ url_for('static', filename="initialiseBase.js")}}"></script>
+    <link src="{{ url_for('static', filename="morris.js-0.5.1/morris.css")}}" rel="stylesheet">
+    <script src="{{ url_for('static', filename="morris.js-0.5.1/raphael-min.js")}}"></script>
+    <script src="{{ url_for('static', filename="morris.js-0.5.1/morris.min.js")}}"></script>
+    {% block head %}
+    {% endblock %}
+</head>
+
+<body>
+    <div id="tabs">
+        <ul>
+            <li><a href="#fragment-1">Home</a></li>
+            <li><a href="#fragment-2">Sessions</a></li>
+            <li><a href="#fragment-3">Per Session Analysis</a></li>
+            <li><a href="#fragment-4">Per User Analysis</a></li>
+            <li><a href="#fragment-5">Population Analysis</a></li>
+        </ul>
+        <div id="fragment-1">
+            {% block homeContent %}
+            {% endblock %}
+        </div>
+        <div id="fragment-2">
+            {% block studentContent %}
+            {% endblock %}
+        </div>
+        <div id="fragment-3">
+            {% block sessionAnalysisContent %}
+            {% endblock %}
+        </div>
+        <div id="fragment-4">
+            {% block perUserAnalysis %}
+            {% endblock %}
+        </div>
+        <div id="fragment-5">
+            {% block populationAnalysis %}
+            {% endblock %}
+        </div>
+
+    </div>
+</body>
+
+</html>

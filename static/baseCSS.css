@@ -1,0 +1,28 @@
+<style>
+         #tabs{font-size: 14px;}
+         body, html{
+           height: 100%;
+         }
+         div{
+           height:auto;
+           width: auto;
+
+         }
+         table{
+           width: auto;
+           height: auto;
+           overflow-y: auto;
+         }
+         th,td{
+           text-align: left;
+           border: 4px solid #FFFFFF;
+           padding: 10px 10px 10px 10px;
+         }
+         label, select{
+           display: inline-block;
+         }
+         .chart{
+           width: auto;
+           height: auto;
+         }
+</style>
